@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Productivity Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">AI Productivity Assistant</h1>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-feature="email">Email Generator</a></li>
+                <li><a href="#" class="nav-link" data-feature="notes">Notes Summarizer</a></li>
+                <li><a href="#" class="nav-link" data-feature="planner">Task Planner</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Email Generator -->
+        <section id="email" class="feature-section active">
+            <h2>Smart Email Generator</h2>
+            <p class="description">Generate professional emails in seconds</p>
+            <form class="feature-form" id="emailForm">
+                <div class="form-group">
+                    <label for="emailPurpose">Email Purpose:</label>
+                    <input type="text" id="emailPurpose" placeholder="e.g., Request for meeting, Job inquiry" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailTone">Tone:</label>
+                    <select id="emailTone" required>
+                        <option value="formal">Formal</option>
+                        <option value="friendly">Friendly</option>
+                        <option value="persuasive">Persuasive</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="emailDetails">Additional Details (optional):</label>
+                    <textarea id="emailDetails" placeholder="Any specific points to include..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Generate Email</button>
+            </form>
+            <div id="emailOutput" class="output-section hidden">
+                <h3>Generated Email:</h3>
+                <div id="emailResult" class="result-text"></div>
+                <button class="btn btn-secondary" onclick="copyToClipboard('emailResult')">Copy to Clipboard</button>
+            </div>
+            <div id="emailLoader" class="loader hidden"></div>
+        </section>
+
+        <!-- Meeting Notes Summarizer -->
+        <section id="notes" class="feature-section">
+            <h2>Meeting Notes Summarizer</h2>
+            <p class="description">Summarize meeting notes and extract action items</p>
+            <form class="feature-form" id="notesForm">
+                <div class="form-group">
+                    <label for="meetingNotes">Meeting Notes:</label>
+                    <textarea id="meetingNotes" placeholder="Paste your meeting notes here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Summarize</button>
+            </form>
+            <div id="notesOutput" class="output-section hidden">
+                <div class="output-grid">
+                    <div class="output-item">
+                        <h3>Summary:</h3>
+                        <div id="notesSummary" class="result-text"></div>
+                    </div>
+                    <div class="output-item">
+                        <h3>Action Items:</h3>
+                        <div id="notesActions" class="result-text"></div>
+                    </div>
+                    <div class="output-item">
+                        <h3>Deadlines:</h3>
+                        <div id="notesDeadlines" class="result-text"></div>
+                    </div>
+                    <div class="output-item">
+                        <h3>Decisions Made:</h3>
+                        <div id="notesDecisions" class="result-text"></div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" onclick="copyToClipboard('notesOutput')">Copy All to Clipboard</button>
+            </div>
+            <div id="notesLoader" class="loader hidden"></div>
+        </section>
+
+        <!-- AI Task Planner -->
+        <section id="planner" class="feature-section">
+            <h2>AI Task Planner</h2>
+            <p class="description">Plan your tasks with AI-powered scheduling and prioritization</p>
+            <form class="feature-form" id="plannerForm">
+                <div class="form-group">
+                    <label for="tasks">Enter Your Tasks (one per line):</label>
+                    <textarea id="tasks" placeholder="Task 1&#10;Task 2&#10;Task 3..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="plannerPeriod">Planning Period:</label>
+                    <select id="plannerPeriod" required>
+                        <option value="daily">Daily Schedule</option>
+                        <option value="weekly">Weekly Plan</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Plan</button>
+            </form>
+            <div id="plannerOutput" class="output-section hidden">
+                <div class="output-grid">
+                    <div class="output-item full-width">
+                        <h3>Priority Ranking:</h3>
+                        <div id="plannerPriority" class="result-text"></div>
+                    </div>
+                    <div class="output-item full-width">
+                        <h3>Generated Schedule:</h3>
+                        <div id="plannerSchedule" class="result-text"></div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" onclick="copyToClipboard('plannerOutput')">Copy to Clipboard</button>
+            </div>
+            <div id="plannerLoader" class="loader hidden"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 AI Productivity Assistant. AI-generated responses may contain inaccuracies. Please verify important information.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
